@@ -1,0 +1,24 @@
+
+.logo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 300px;
+}
+
+.buttons{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+  }
+
+.button1{
+    margin-right: 10px;
+    padding: 10px;
+    
+}
+.button2{
+    margin-left: 10px;
+    padding: 10px;
+}
