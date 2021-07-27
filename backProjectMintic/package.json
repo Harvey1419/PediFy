@@ -1,0 +1,30 @@
+{
+  "name": "back",
+  "version": "1.0.0",
+  "description": "pedify",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Harvey1419/PediFy.git"
+  },
+  "keywords": [
+    "pedify"
+  ],
+  "author": "Grupo6",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Harvey1419/PediFy/issues"
+  },
+  "homepage": "https://github.com/Harvey1419/PediFy#readme",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.13.3",
+    "rxjs": "^7.2.0"
+  }
+}
