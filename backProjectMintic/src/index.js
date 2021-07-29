@@ -12,7 +12,8 @@ app.use("/", require("./routes/route"));
 
 app.use("/admin", require("./infraestructure/entry-points/admin.controller"));
 
+app.use("/cajero", require("./infraestructure/entry-points/cajero.controller"))
+
 app.listen(port, () => {
   console.log(`listening on port: ${port}`);
 });
-  

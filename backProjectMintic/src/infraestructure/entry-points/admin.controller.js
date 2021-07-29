@@ -1,12 +1,13 @@
 const { Router } = require("express");
 const router = Router();
-const adminController = require("../driven-adapters/admin/admin.service")
-const { jwt } = require('jsonwebtoken')
+const adminService = require("../driven-adapters/admin/admin.service");
 
-router.post("/login", (req, res) => {
-  res.send("login");
-});
+router.post("/signup", adminService.saveAdmin);
 
-router.post("/signup", adminController.saveAdmin);
+router.post("/login", adminService.singin);
+
+router.post("/createCajero", adminService.verifyToken, adminService.createCashier);
+
+router.get("/generalshow", adminService.verifyToken, adminService.generalShow);
 
 module.exports = router;
