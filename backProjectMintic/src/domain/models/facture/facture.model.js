@@ -1,9 +1,7 @@
 const {Schema, model} = require('mongoose')
-const productSchema = require('../product/product.model')
 
 const factureSchema = new Schema({
-    product: String,
-    quantity: Number,
+    list: [{product : {productName: String, productPrice: Number},quantity: Number}],
     total: Number
 },{
     createdAt:true
