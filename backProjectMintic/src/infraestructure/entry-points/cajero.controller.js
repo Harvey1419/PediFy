@@ -8,4 +8,8 @@ router.post("/createProduct",cajeroService.verifyToken, cajeroService.createProd
 
 router.get("/showProducts", cajeroService.verifyToken, cajeroService.showProducts);
 
+router.post("/update", cajeroService.verifyToken, cajeroService.updateQuantity);
+
+router.post("/factura", cajeroService.verifyToken, cajeroService.pay)
+
 module.exports = router;
