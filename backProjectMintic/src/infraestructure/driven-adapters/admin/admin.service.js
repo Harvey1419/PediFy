@@ -12,16 +12,15 @@ adminService.saveAdmin = async (req, res) => {
   req.body.password = Bcrypt.hashSync(req.body.password, 10);
   const { email, password } = req.body;
   const newAdmin = new Admin({ email, password });
-  if (email == newAdmin.email) {
+/*   if (email == newAdmin.email) {
     return res.status(401).send({ Message: "the email already exist" });
-  } else {
+  } else  */
     await newAdmin.save();
     console.log(newAdmin);
     const token = jwt.sign({ id: newAdmin._id }, config.secret, {
       expiresIn: 60 * 20,
     });
     return res.status(200).json({ token });
-  }
 };
 
 adminService.singin = async (req, res) => {
@@ -45,9 +44,9 @@ adminService.createCashier = async (req, res) => {
   req.body.password = Bcrypt.hashSync(req.body.password, 10);
   const { email, password } = req.body;
   const newCajero = new Cajero({ email, password });
-  if (email == newCajero.email) {
+/*   if (email == newCajero.email) {
     return res.status(401).send({ Message: "the email already exist" });
-  }
+  } */
   await newCajero.save();
   console.log(newCajero);
   const token = jwt.sign({ id: newCajero._id }, config.secret, {
