@@ -1,12 +1,12 @@
 const Cajero = require("../../../domain/models/cajero/cajero.model");
 const Product = require("../../../domain/models/product/product.model");
-const Facturea = require("../../../domain/models/facture/facture.model");
+const Facture = require("../../../domain/models/facture/facture.model");
 const jwt = require("jsonwebtoken");
 require("../../../conectDB/database");
 const config = require("../../../config");
 const Bcrypt = require("bcrypt");
 
-cajeroService = {};
+let cajeroService = {};
 
 cajeroService.login = async (req, res) => {
   const { email, password } = req.body;
@@ -18,9 +18,12 @@ cajeroService.login = async (req, res) => {
   if (!validpassword) {
     return res.status(401).send({ Message: "invalid password" });
   }
-  const token = jwt.sign({ id: cajero._id }, config.cajerosecret, /* {
+  const token = jwt.sign(
+    { id: cajero._id },
+    config.cajerosecret /* {
     expiresIn: 60 * 20,
-  } */);
+  } */
+  );
 
   res.status(200).json({ token });
 };
@@ -37,22 +40,34 @@ cajeroService.createProduct = async (req, res) => {
 };
 
 cajeroService.pay = async (req, res) => {
-  const pay = [{product : {productName, productPrice}, quantity}]  = req.body;
-  console.log(pay);
-  const total = pay.map( x => {
-    a = x.product.productPrice*x.quantity;
-    console.log(a);
-    return a;
-  }).reduce((a,b) =>{
-    return a + b;
-  })
+  const list = ([
+    {
+      product: { productName, productPrice },
+      quantity,
+    },
+  ] = req.body);
+  console.log(productName);
+
+  const total = list
+    .map((x) => {
+      a = x.product.productPrice * x.quantity;
+      console.log(a);
+      return a;
+    })
+    .reduce((a, b) => {
+      return a + b;
+    });
+  const newFacture = new Facture({ list, total });
+  await newFacture.save();
+  console.log(newFacture);
+  res.json({ list });
   console.log(total);
 };
 
 cajeroService.updateQuantity = async (req, res) => {
   const filter = { productName: req.body.name };
   const update = { stock: req.body.quantity };
-  const quantityUpdate = await Product.findOneAndUpdate(filter, update, {
+  await Product.findOneAndUpdate(filter, update, {
     new: true,
   });
   res.json({ Message: "Update Correctly" });
