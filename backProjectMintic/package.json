@@ -4,7 +4,8 @@
   "description": "pedify",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "start": "nodemon src/index.js"
   },
   "repository": {
     "type": "git",
@@ -25,6 +26,7 @@
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.13.3",
+    "nodemon": "^2.0.12",
     "rxjs": "^7.2.0"
   }
 }
