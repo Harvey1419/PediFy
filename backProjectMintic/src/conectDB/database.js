@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-mongoose.connect("mongodb+srv://admin:RnbuszA9JPclsj6L@cluster0.dbnro.mongodb.net/minticProject?retryWrites=true&w=majority", {
+mongoose.connect("mongodb://localhost:27017/projectMintic", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
