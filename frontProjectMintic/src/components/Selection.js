@@ -1,15 +1,10 @@
 import React, { Fragment, useState } from "react";
 import logo from "../assets/logo.png";
-import Login from '../components/Login'
+import { Link } from "react-router-dom";
 
 
 const Selection = () => {
-  const [selection, setSelection] = useState(false);
-  const [name, setName] = useState("");
-  const login = (perfil, velidation) => {
-    setName(perfil);
-    setSelection(velidation);
-  };
+ 
   return (
     <div className="row">
       <div className="logohome col-lg-6 "></div>
@@ -17,8 +12,7 @@ const Selection = () => {
         
         <img src={logo} height="100" width="100" alt="" />
         <h1 className="titulo">Bienvenido al panel de Pedify</h1>
-        {selection === false ? (
-          <Fragment>
+        <Fragment>
             <div class="card itemhome text-center">
               <div class="card-body">
                 <h3 class="card-title">Administrador</h3>
@@ -26,14 +20,7 @@ const Selection = () => {
                   Podras crear o eliminar perfiles de cajeros y ver los
                   reportes.
                 </p>
-                <button
-                  class="btn btn-primary"
-                  onClick={() => {
-                    login("Administrador", true);
-                  }}
-                >
-                  Ingresar
-                </button>
+                <Link className="btn btn-primary" to="/LoginAdmin">Ingresar</Link>
               </div>
             </div>
 
@@ -43,20 +30,12 @@ const Selection = () => {
                 <p class="card-text">
                   Podras ver el inventario y vender productos.
                 </p>
-                <button
-                  class="btn btn-primary"
-                  onClick={() => {
-                    login("Cajero", true);
-                  }}
-                >
-                  Ingresar
-                </button>
+                <Link className="btn btn-primary" to="/LoginCajero">Ingresar</Link>
+                
               </div>
             </div>
           </Fragment>
-        ) : (
-          <Login setSelection={setSelection} name={name} />
-        )}
+
       </div>
     </div>
   )
