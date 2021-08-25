@@ -1,8 +1,8 @@
 // import logo from './logo.svg';
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import Login from "./components/Login";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+
 import Selection from "./components/Selection";
 import { Fragment } from "react";
 import Admin from "./components/Admin";
@@ -10,6 +10,8 @@ import Cajero from "./components/Cajero";
 import ListCajero from "./components/ListCajero";
 import ReporteDiario from "./components/ReporteDiario";
 import ReporteMensual from "./components/ReporteMensual";
+import LoginCajero from "./components/LoginCajero";
+import LoginAdmin from "./components/LoginAdmin";
 function App() {
   return (
     <Router>
@@ -39,8 +41,16 @@ function App() {
             </div>
           </Route>
 
-          <Route path="/Login">
-            <Login />
+          <Route path="/LoginAdmin">
+            <div className="container">
+              <LoginAdmin/>
+            </div>
+          </Route>
+
+          <Route path="/LoginCajero">
+            <div className="container">
+                <LoginCajero/>
+            </div>
           </Route>
 
           <Route path="/">
